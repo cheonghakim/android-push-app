@@ -37,8 +37,6 @@ import com.google.firebase.messaging.FirebaseMessaging;
 import android.util.Log;
 import android.content.SharedPreferences;
 import android.content.Context;
-
-
 public class MainActivity extends AppCompatActivity {
 
     private ActivityMainBinding binding;

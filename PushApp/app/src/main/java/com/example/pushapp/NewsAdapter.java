@@ -1,13 +1,18 @@
 package com.example.pushapp;
 
+import android.content.Intent;
+import android.net.Uri;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.google.firebase.messaging.FirebaseMessaging;
 
 import org.w3c.dom.Text;
 
@@ -38,6 +43,18 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.ViewHolder> {
         holder.titleTextView.setText(item.getTitle() + "...");
         holder.contentTextView.setText(item.getContent() + "...");
         holder.dateTextView.setText(item.getCreatedDate());
+
+        holder.titleTextView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String link = item.getLink();
+                if (!link.isEmpty()) {
+                    // 링크 주소를 사용자에게 보여주지 않고 웹 브라우저를 실행하여 링크로 연결
+                    Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(link.trim()));
+                    v.getContext().startActivity(intent);
+                }
+            }
+        });
     }
 
     @Override
