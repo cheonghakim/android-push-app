@@ -64,8 +64,8 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
         // 알림 채널 생성 및 설정
         long currentTimeMillis = System.currentTimeMillis();
         int notificationId = (int) currentTimeMillis;
-        String channelId = "news_letter_id";
-        String channelName = "News Letters";
+        String channelId = getString(R.string.default_notification_channel_id);
+        String channelName = getString(R.string.default_notification_channel_name);
         int importance = NotificationManager.IMPORTANCE_HIGH;
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
